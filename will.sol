@@ -16,4 +16,34 @@ contract will{
         fortune = msg.value; //tell us how much eatheris being sent.
         deceased = false;
     }
+
+    
+    /*
+    1)create modifire so the only person who can call the contract is the owner
+    2)create modifire so that we only allecate funds if friends gramps deceased...
+    */
+
+    //1
+    modifire onlyOwner{
+        //conditional statement
+        require(msg.sender == owner);
+        _; //to shift to the actual function, after we run this modifire
+    }
+
+    //2
+    modifire mustBeDeceased{
+        //conditional statement
+        require(deceased == true);
+        _; //to shift to the actual function, after we run this modifire
+    }
+
+    //arrays :: create list of items..
+    address payable[] familyWallets
+    mapping(adress => uint) inheritance
+
+    //set inheritance for each address
+    function setInheritance(address payable wallet, uint amount)public{
+        familyWallets.push(wallet);
+        inheritance[wallet] = amount;
+    }
 }
