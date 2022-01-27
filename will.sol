@@ -46,4 +46,12 @@ contract will{
         familyWallets.push(wallet);
         inheritance[wallet] = amount;
     }
+
+    //pay each family member based on their wallet address
+    function payout() private mustBeDeceased{
+        for(i = 0; i < familyWallets.length; i++){
+            familyWallets[i].transfer(inheritance[familyWallets[i]])
+            //transfering the funds from contract addres to reciver address
+        }
+    }
 }
