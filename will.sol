@@ -54,4 +54,10 @@ contract will{
             //transfering the funds from contract addres to reciver address
         }
     }
+
+    //oracle simulated switch
+    function hasDeceased() public onlyOwner{
+        isDeceased = true;
+        payout();
+    }
 }
