@@ -16,5 +16,17 @@ require(msg.sender == minter) //the owner
 balances[reciever] +=  amount //or balances[reciever] = balances[reciever] + amount
 }
 
+error insufficientBalance(uint requested, uint available);
+
+function send(address reciever, uint amount)public{
+    if(amount > balances[msg.sender])
+    revert insufficientBalance({
+        requested: amount,
+        available: balances[msg.sender]
+    });
+    balances[msg.sender] -= amount;
+    balances[reciever] += amount;
+}
+
 
 }
