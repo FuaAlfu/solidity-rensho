@@ -26,6 +26,7 @@ function send(address reciever, uint amount)public{
     });
     balances[msg.sender] -= amount;
     balances[reciever] += amount;
+    emit Sent(msg.sender, reciever,amount) //sign an event
 }
 
 
